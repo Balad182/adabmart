@@ -1,0 +1,97 @@
+<%- include('../header') -%>
+
+
+
+<!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><%= pageName %></h1>        
+    </div>
+                    
+<form action="/admin/products/updateProduct" method="post" enctype="multipart/form-data">
+    <div class="row">
+        
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="productName">Product Name </label>
+                        <input type="text" name="productName" class="form-control" value="<%= product.productName %>">                           
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productCode">Product Code </label>
+                        <input type="text" name="productCode" class="form-control" value="<%= product.productCode %>" readonly>
+                       
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productDescription">Product Description</label>
+                        <textarea name="productDescription" id="" cols="30" rows="10" class="form-control"><%= product.productDescription %></textarea>
+                    </div>
+
+                        <!-- Product Image -->
+                    <div class="form-group">
+                        <label for="productImage">Product Image</label><br>
+                        <input type="file" name="productImage"><br>
+                        <% if(product.productImagePath){ %>
+                        <img width='200' src="<%= product.productImagePath %>">
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="form-group">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" name="updateId" value="<%= product._id %>" class="btn btn-primary btn-lg">Update Product</button>
+                    </div>
+
+                     <!-- Product Categories-->
+
+                    <div class="form-group">
+                         <label for="productCategory">Product Category</label>
+                         <select name="productCategoryId" id="" class="form-control">
+                            <option value="<%= product.productCategory._id %>"><%= product.productCategory.categoryName %></option>
+                            <% if(categories){ %>
+                            <% for(let i=0; i < categories.length; i++){ %>
+                            <% if(categories[i].slug !== product.productCategory.slug){ %>
+                            <option value="<%= categories[i]._id %>"><%= categories[i].categoryName %></option>
+                            <% } %>
+                            
+                            <% } } %>          
+                        </select>
+                    </div>
+                    
+                    <!-- Product Brands-->
+                    <div class="form-group">
+                      <label for="productQuantity">Product Quantity</label>
+                         <input type="number" name="productQuantity" class="form-control" value="<%= product.productQuantity %>">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="productManufacturer">Product Manufacturer</label>
+                         <input type="text" name="productManufacturer" class="form-control" value="<%= product.productManufacturer %>">
+                    </div>
+
+                    <!-- Product Price -->
+                    <div class="form-group">
+                        <label for="productPrice">Product Price</label>
+                        <input type="number" name="productPrice" class="form-control" value="<%= product.productPrice %>">                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+<%- include('../footer') -%>

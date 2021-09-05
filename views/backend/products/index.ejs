@@ -1,0 +1,92 @@
+<%- include('../header') -%>
+
+
+
+<!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><%= pageName %></h1>        
+    </div>
+
+<!-- Flash messages -->
+ <% if(successMsg.length > 0 || errorMsg.length > 0) {%>
+      <div class="row mt-3 mb-3">
+        <div class="col-md-12 m-auto">
+          <% if (successMsg.length > 0) { %>
+          <div id="success" class="alert alert-success">
+            <%= successMsg %>
+          </div>
+          <% } else { %>
+          <div id="success" class="d-none"></div>
+          <% } %>
+        </div>
+        <div class="col-md-12 m-auto">
+          <% if (errorMsg.length > 0) { %>
+          <div id="error" class="alert alert-danger">
+            <%= errorMsg %>
+          </div>
+          <% } else { %>
+          <div id="error" class="d-none"></div>
+          <% } %>
+        </div>
+      </div>
+    <% } %>
+
+
+<!-- All Products Table -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"><%= pageName %></h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                       <th>productCode</th>
+                       <th>Name</th>       
+                       <th>Category</th>       
+                       <th>Price(AED)</th>
+                       <th>Quantity</th>
+                       <th>Manufacturer</th>
+                       <th>Availability</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                       <th>productCode</th>
+                       <th>Name</th>       
+                       <th>Category</th>       
+                       <th>Price(AED)</th>
+                       <th>Quantity</th>
+                       <th>Manufacturer</th>
+                       <th>Availability</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    
+                  <% if(products){ %>
+                  <% products.forEach(function(product){ %>
+                    <tr>
+                      <td> <%= product.productCode %></td>
+                      <td> <%= product.productName %><br>
+                      <a href="/admin/products/<%= product.productName %>/<%= product._id %>">
+                      <img width="50" src="<%= product.productImagePath %>" alt="image"/>
+                      </a>
+                      </td>
+                      <td><%= product.productCategory.categoryName %></td>  
+                      <td><%= product.productPrice %></td>
+                      <td> <%= product.productQuantity %></td>
+                      <td><%= product.productManufacturer %></td>
+                      <td> <%= product.available %></td>
+                      <td><a class="btn btn-danger" href="/admin/products/<%=product._id %>"><i class="fas fa-times"></i></a></td>
+                    </tr>
+                  <% }); }%>                                                                              
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/pagination') -%>
+
+<%- include('../footer') -%>

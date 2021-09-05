@@ -1,0 +1,84 @@
+<%- include('../header') -%>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800"><%= pageName %></h1>        
+</div>
+
+
+<!-- Flash messages -->
+ <% if(successMsg.length > 0 || errorMsg.length > 0) {%>
+      <div class="row mt-3 mb-3">
+        <div class="col-md-12 m-auto">
+          <% if (successMsg.length > 0) { %>
+          <div id="success" class="alert alert-success">
+            <%= successMsg %>
+          </div>
+          <% } else { %>
+          <div id="success" class="d-none"></div>
+          <% } %>
+        </div>
+        <div class="col-md-12 m-auto">
+          <% if (errorMsg.length > 0) { %>
+          <div id="error" class="alert alert-danger">
+            <%= errorMsg %>
+          </div>
+          <% } else { %>
+          <div id="error" class="d-none"></div>
+          <% } %>
+        </div>
+      </div>
+    <% } %>
+
+
+<!-- All Users Table -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All Users</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                       <th>Serial Number</th>
+                       <th>User Image</th>
+                       <th>User Name</th>       
+                       <th>Role</th>       
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                       <th>Serial Number</th>
+                       <th>User Image</th>
+                       <th>User Name</th>       
+                       <th>Role</th>       
+                    </tr>
+                </tfoot>
+                <tbody>
+                    
+                  <% if(users){ %>
+                    <% users.forEach(function(user, index){ %>
+                    <tr>
+                      <td> <%= index + 1  %></td>
+                           
+                      <td> <a href="/admin/users/<%= user._id %>">
+                      <img width="50" src="<%= user.userImagePath %>" alt="image"/>
+                      </a></td>            
+                      <td> <%= user.username %></td> 
+                      <td><%= user.role %></td>        
+                      <td><a class="btn btn-danger" href="/admin/users/deleteUser/<%= user._id %>"><i class="fas fa-times"></i></a></td>
+                    </tr>
+                  <% }); }%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/pagination') -%>
+
+    
+
+
+<%- include('../footer') -%>

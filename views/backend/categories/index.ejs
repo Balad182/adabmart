@@ -1,0 +1,95 @@
+<%- include('../header') -%>
+
+<!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><%= pageName %></h1>        
+    </div>
+
+<!-- Flash messages -->
+	 <% if(successMsg.length > 0 || errorMsg.length > 0) {%>
+	  <div class="row mt-3 mb-3">
+	    <div class="col-md-12 m-auto">
+	      <% if (successMsg.length > 0){ %>
+	      <div id="success" class="alert alert-success">
+	        <%= successMsg %>
+	      </div>
+	      <% } else { %>
+	      <div id="success" class="d-none"></div>
+	      <% } %>
+	    </div>
+	    <div class="col-md-12 m-auto">
+	      <% if (errorMsg.length > 0) { %>
+	      <div id="error" class="alert alert-danger">
+	        <%= errorMsg %>
+	      </div>
+	      <% }  else { %>
+	      <div id="error" class="d-none"></div>
+	      <% } %>
+	    </div>
+	  </div>
+	<% } %>
+
+<!-- Content Row -->
+
+    <div class="row">
+        
+        <!-- Add Category -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Add Category</h6>                    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <form action="/admin/categories/createCategory" method="post">
+				    <div class="form-group">	    	
+				    	<label for="categoryName">Category Name</label>    	
+				    	<input type="text" name="categoryName" class='form-control'>
+				    </div>
+				    <div class="form-group">
+				    	<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+				    	<button type="submit" name="button" class="btn btn-primary btn-lg">Create Category</button>
+				    </div>    
+					</form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories List -->
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header -->
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary"><%=pageName%></h6>                    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <% if(categories){ %>
+					<table class="table">
+				    <thead>
+				      <tr>
+				        <th>S/N</th>
+				        <th>Category Name</th>	        
+				      </tr>
+				    </thead>
+				    <tbody>
+				    	<% categories.forEach(function(category, index){ %>
+				    	<tr>	        
+					        <td> <%= index + 1 %> </td>
+					        <td><a href="/admin/categories/<%=category.slug%>" ><%= category.categoryName %></a></td>	          	
+					     </tr>
+				    	<% }) %>	     	   
+				    </tbody>
+				  	</table>
+			  	<% } %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+<%- include('../footer') -%>

@@ -1,0 +1,94 @@
+<%- include('../header') -%>
+
+
+<!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><%= pageName %></h1>        
+    </div>
+
+<!-- Flash messages -->
+ <% if(successMsg.length > 0 || errorMsg.length > 0) {%>
+      <div class="row mt-3 mb-3">
+        <div class="col-md-12 m-auto">
+          <% if (successMsg.length > 0) { %>
+          <div id="success" class="alert alert-success">
+            <%= successMsg %>
+          </div>
+          <% } else { %>
+          <div id="success" class="d-none"></div>
+          <% } %>
+        </div>
+        <div class="col-md-12 m-auto">
+          <% if (errorMsg.length > 0) { %>
+          <div id="error" class="alert alert-danger">
+            <%= errorMsg %>
+            </div>
+                <% } else { %>
+          <div id="error" class="d-none"></div>
+          <% } %>
+        </div>
+      </div>
+    <% } %>
+    
+<!-- All Orders Table -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3 row">
+        <h6 class="m-0 font-weight-bold text-primary col-sm-8">All Orders</h6>
+        <form class="form-inline col-sm-4" action="/admin/orders/search" method="GET">
+            <input
+              class="search-input form-control rounded-sm"
+              type="search"
+              placeholder="Search By Order #"
+              name="search"
+            />
+        </form>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>User</th>       
+                        <th>Address</th>       
+                        <th>Order Date</th>
+                        <th>Order Time</th>
+                        <th>Payment Id</th>
+                        <th>Amount (USD)</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>User</th>       
+                        <th>Address</th>       
+                        <th>Order Date</th>
+                        <th>Order Time</th>
+                        <th>Payment Id</th>
+                        <th>Amount (USD)</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    
+                      <% if(orders){ %>
+                      <% orders.forEach(function(order){ %>
+                        <tr>
+                        <td><%= order.orderNumber %></td>
+                        <td><%= order.user.username %></td>
+                        <td><%= order.address %></td>
+                        <td><%= moment(order.createdAt).format( 'MMMM Do YYYY')%></td>    
+                        <td><%= moment(order.createdAt).format( 'h:mm:ss a')%></td> 
+                        <td><%= order.paymentId %></td>
+                        <td><%= order.cart.totalCost %></td>
+                        <td><a class="btn btn-danger" href="/admin/orders/<%=order._id %>"><i class="fas fa-times"></i></a></td>
+                        </tr>
+                      <% }); }%>                       
+                                                                              
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/pagination') -%>
+<%- include('../footer') -%>

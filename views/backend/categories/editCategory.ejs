@@ -1,0 +1,43 @@
+<%- include('../header') -%>
+
+<!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><%= pageName %></h1>        
+    </div>
+
+<!-- Content Row -->
+
+    <div class="row">      
+
+        <!-- Edit Category -->
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header -->
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary"><%=pageName%></h6>                    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <form method='post' id="editCatForm">
+					    <div class="form-group">
+					    	<label name="for categoryName">
+					    	<input type='text' name="updateName" value="<%= foundCategory.categoryName %>" class='form-control'>
+					    </div>
+					    
+					    <div class="form-group">
+					    	<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+					    	<button type="submit" name="updateId" onclick="submitForm('/admin/categories/updateCategory')" value="<%= foundCategory._id %>" class="btn btn-primary col-sm-3 mb-2 mr-2">Update Category</button>
+
+					    	<button type="submit" name="deleteId" onclick="submitForm('/admin/categories/deleteCategory')" value="<%= foundCategory._id %>" class="btn btn-danger col-sm-3 mb-2 mr-2">Delete Category</button>
+					    </div>
+					    
+					</form> 				
+
+                </div>
+            </div>
+        </div>
+
+    </div>	
+
+<%- include('../footer') -%>

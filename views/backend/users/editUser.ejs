@@ -1,0 +1,45 @@
+<%- include('../header') -%>
+
+<!-- Page Heading -->
+<!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><%= pageName %></h1>        
+    </div>
+
+<!-- Update User -->
+<div class="card shadow mb-4">    
+    <div class="card-body">        
+        <div class="row">                    
+            <div class="col-lg-7">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Update User</h1>
+                    </div>
+                    <form action="/admin/users/updateUser" method="post" class="user" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="file" name="userImage">
+                        </div> 
+                        <div class="form-group">                                        
+                                <input type="text" class="form-control form-control-user" name="name" value="<%= user.username %>">                                              
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" class="form-control form-control-user" name="email" value="<%= user.email %>" readonly>
+                        </div>
+
+                        <div class="form-group">                
+                            <input type="text" name="role" class="form-control form-control-user" value="<%= user.role %>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button type="submit" name="updateId" value="<%= user._id %>" class="btn btn-primary btn-user btn-block">Update User</button>                            
+                        </div>                        
+                    </form>                            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+
+<%- include('../footer') -%>

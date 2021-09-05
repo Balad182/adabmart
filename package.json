@@ -1,0 +1,38 @@
+{
+    "name": "emarket",
+    "version": "1.0.0",
+    "description": "A virtual ecommerce website using Node js, Express js, and Mongoose.",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon app.js"
+    },
+    "author": "Bolajoko Aliyu",
+    "license": "ISC",
+    "dependencies": {
+        "@mailchimp/mailchimp_marketing": "^3.0.59",
+        "bcrypt": "^5.0.1",
+        "body-parser": "^1.19.0",
+        "connect-mongo": "^4.5.0",
+        "cookie-parser": "^1.4.5",
+        "csurf": "^1.11.0",
+        "dotenv": "^8.6.0",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "express-fileupload": "^1.2.1",
+        "express-flash-message": "^2.1.0",
+        "express-session": "^1.17.2",
+        "express-validator": "^6.12.1",
+        "fs-extra": "^10.0.0",
+        "http-errors": "^1.8.0",
+        "mailgun-js": "^0.22.0",
+        "md5": "^2.3.0",
+        "moment": "^2.29.1",
+        "mongoose": "^5.13.8",
+        "mongoose-slug-updater": "^3.3.0",
+        "nanoid": "^3.1.25",
+        "nodemon": "^2.0.12",
+        "passport": "^0.4.1",
+        "passport-local": "^1.0.0",
+        "stripe": "^8.174.0"
+    }
+}
