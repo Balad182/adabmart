@@ -181,16 +181,6 @@ app.get("/editProfile", middleware.isLoggedIn, async (req, res) => {
     }
 });
 
-// GET: display the forgot password form with csrf token
-app.get("/forgotPassword", (req, res) => {
-    const errorMsg = req.consumeFlash("error");  
-    res.render("user/forgotPassword", {
-        csrfToken: req.csrfToken(),
-        errorMsg,
-        pageName: "Forgot Password",    
-    });
-});
-
 // GET: logout
 app.get('/logout', middleware.isLoggedIn, (req, res) => {
     req.logout();

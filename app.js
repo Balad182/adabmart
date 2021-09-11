@@ -34,8 +34,8 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({      
-      client: mongoose.connection.getClient(),
+    store: MongoStore.create( {   
+      mongoUrl: process.env.MONGO_URI || process.env.LOCAL_URI,
     }),
     // session expires after 4 hours
     cookie: {
@@ -85,11 +85,6 @@ app.use("/admin/categories", adminCategoriesRouter);
 app.use("/admin/orders", adminOrdersRouter);
 app.use("/admin/products", adminProductsRouter);
 app.use("/admin/users", adminUsersRouter);
-
-// app.all('/admin', middleware.isLoggedIn, middleware.isAdmin, (req, res, next)=>{
-//   return next();
-// });
-
 
 //catch 404 and forward to error handler
 app.use(function (req, res, next) {

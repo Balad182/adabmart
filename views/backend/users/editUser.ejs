@@ -14,6 +14,9 @@
                 <div class="p-5">
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">Update User</h1>
+                        <% if(user.userImagePath){ %>
+                            <img style="width: 100px; height: 100px !important;" class="rounded-circle mt-2" src="<%= user.userImagePath %>">
+                        <% } %>
                     </div>
                     <form action="/admin/users/updateUser" method="post" class="user" enctype="multipart/form-data">
                         <div class="form-group">
