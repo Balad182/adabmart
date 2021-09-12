@@ -1,7 +1,7 @@
 {
     "name": "adabmart",
     "version": "1.0.0",
-    "description": "A virtual ecommerce website using Node js, Express js and Mongoose.",
+    "description": "A virtual ecommerce store using Node js, Express js and Mongoose.",
     "main": "app.js",
     "scripts": {
         "start": "nodemon app.js"

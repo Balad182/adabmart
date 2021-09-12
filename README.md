@@ -67,7 +67,7 @@ To run this application, you have to set your own environmental variables. some 
 
 - MONGO_URI: this is the connection string of your MongoDB Atlas database.
 
-- SESSION_SECRET: a secret message for the session. You can use any string here.
+- SESSION_SECRET: secret message for the session. You can use any string for this.
 
 - STRIPE_SECRET_KEY: the stripe package is used to process payment in the checkout route. To get this, you should set up a stripe account and put your private API key here.
 
