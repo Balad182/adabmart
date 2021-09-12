@@ -71,9 +71,9 @@ To run this application, you have to set your own environmental variables. some 
 
 - STRIPE_SECRET_KEY: the stripe package is used to process payment in the checkout route. To get this, you should set up a stripe account and put your private API key here.
 
-- MAILGUN_API_KEY, MAILGUN_DOMAIN: these are Mailgun required variables to process mails sent by users in the contactus page, you have to setup Mailgun account to get this.
+- MAILGUN_API_KEY, MAILGUN_DOMAIN: these are Mailgun required variables to process mails sent by users in the contactus page, you have to setup Mailgun account to get these.
 
-- MAILCHIMP_API_KEY, MAILCHIMP_LIST_ID and MAILCHIMP_SERVER_PREFIX: these are Mailchimp required variables to process newsletter subscribers' email, you have to setup Mailchimp account to get this
+- MAILCHIMP_API_KEY, MAILCHIMP_LIST_ID and MAILCHIMP_SERVER_PREFIX: these are Mailchimp required variables to process newsletter subscribers' email, you have to setup Mailchimp account to get these.
 
 After setting up these environmental variables in the .env file at the root of the project, you can now run "npm start" in the terminal and the application should work.
 
