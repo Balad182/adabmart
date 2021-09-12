@@ -1,13 +1,16 @@
 {
-    "name": "emarket",
+    "name": "adabmart",
     "version": "1.0.0",
-    "description": "A virtual ecommerce website using Node js, Express js, and Mongoose.",
+    "description": "A virtual ecommerce website using Node js, Express js and Mongoose.",
     "main": "app.js",
     "scripts": {
         "start": "nodemon app.js"
     },
     "author": "Bolajoko Aliyu",
     "license": "ISC",
+    "engines": {
+        "node": "14.17.6"
+    },
     "dependencies": {
         "@mailchimp/mailchimp_marketing": "^3.0.59",
         "bcrypt": "^5.0.1",
