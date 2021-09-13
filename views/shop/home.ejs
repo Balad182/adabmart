@@ -62,7 +62,7 @@
     <% if (categories) { %>
         <div class="row text-center m-auto">
             <% for(let i=0; i<categories.length; i++){ %>
-                <div class="col-lg-2 col-md-2 col-sm-12 text-center ml-2">
+                <div class="col-lg-2 col-md-2 col-sm-12 text-center ml-3">
                     <a class="title-link" href="/products/<%=categories[i].slug%>">
                         <img src="images/<%=categories[i].slug%>.png" alt="category" class="circle-img"/>
                         <h4 class="mb-3 mt-3 centered"><%=categories[i].categoryName%></h4>
@@ -106,7 +106,7 @@
             <div class="carousel-item active">
                 <div class="row">
                     <% for(let i=0; i<4; i++) { %>          
-                        <div class="col-md-3 product-index-box">
+                        <div class="col-md-3 col-sm-6 product-index-box">
                             <div class="single-product d-flex flex-column h-100">
                                 <a class="title-link"
                                 href="/products/<%=products[i].productName%>/<%=products[i]._id%>">
@@ -141,7 +141,7 @@
             <div class="carousel-item">
                 <div class="row">
                     <% for(let i=4; i<8; i++) { %>
-                        <div class="col-md-3 product-index-box">
+                        <div class="col-md-3 col-sm-6 product-index-box">
                             <div class="single-product d-flex flex-column h-100">
                                 <a class="title-link"
                                 href="/products/<%=products[i].productName%>/<%=products[i]._id%>">
@@ -176,7 +176,7 @@
             <div class="carousel-item">
                 <div class="row">
                     <% for(let i=8; i<12; i++) { %>
-                        <div class="col-md-3 product-index-box">
+                        <div class="col-md-3 col-sm-6 product-index-box">
                             <div class="single-product d-flex flex-column h-100">
                                 <a class="title-link"
                                 href="/products/<%=products[i].productName%>/<%=products[i]._id%>">
@@ -227,7 +227,7 @@
                     <% if(products[a].productCategory.slug == categories[i].slug){ %>
                         <% n++; %>
                         <% if(n<=4){ %>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 product-index-box">
+                            <div class="col-md-3 col-sm-6 product-index-box">
                                 <div class="single-product d-flex flex-column h-100">
                                     <a class="title-link"
                                     href="/products/<%=products[a].productName%>/<%=products[a]._id%>">

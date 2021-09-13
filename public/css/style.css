@@ -344,7 +344,7 @@ hr.gradient-style {
 }
 
 /* FOOTER */
-.fa-icons a {
+.icon-color a {
   color: #ef233c !important;
 }
 ul {
@@ -476,7 +476,7 @@ footer {
 /* MD SCREENS */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
   .col-md-3 {
-    margin: 10px;
+    margin: 0px;
   }
   .circle-img {
     width: 100px;
