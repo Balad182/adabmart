@@ -4,7 +4,8 @@
     "description": "an online ecommerce website using Node js, Express js and Mongoose.",
     "main": "app.js",
     "scripts": {
-        "start": "nodemon app.js"
+        "start": "node app.js",
+        "dev": "nodemon app.js"
     },
     "author": "Bolajoko Aliyu",
     "license": "ISC",
