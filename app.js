@@ -104,6 +104,10 @@ app.use(function (err, req, res, next) {
 
 var port = process.env.PORT || 3000;
 app.set("port", port);
-app.listen(port, () => {
-    console.log("Server running at port " + port);
-});
+
+//Connect to the database before listening
+connectDB().then(() => {
+    app.listen(port, () => {
+        console.log("Server running at port " + port);
+    });
+})
