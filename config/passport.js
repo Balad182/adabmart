@@ -61,7 +61,7 @@ passport.use("local.signin",
             }
 
             if (!user.comparePassword(password)) {
-                return done(null, false, { message: "Wrong password" });
+                return cb(null, false, { message: "Wrong password" });
             }
             return cb(null, user);
         } catch (error) {
