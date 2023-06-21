@@ -90,7 +90,6 @@ const moveFile = (fileName, filePath) => {
     fileName.mv(filePath, (err) => {        
         if (err) {
             console.log(err);
-            return res.redirect(req.headers.referer);
         }
     });
 };
